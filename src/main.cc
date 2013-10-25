@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "ab_pruning/ab_node.h"
 
 // NODE creates a non-terminal node
@@ -100,5 +102,12 @@ main(int argc, char** argv)
   RELATE(a0, b0);
   RELATE(a0, b1);
 
-  // awesome! now we just need to 
+  // awesome! now we just need to eval a0
+  // it should trace all the steps correctly, so now just
+  // let it go!
+  a0.make_max_min();
+  int aval = a0.eval();
+
+  std::cout << "Expansions completed" << std::endl;
+  std::cout << "Value of Max Node A = " << aval << std::endl;
 }

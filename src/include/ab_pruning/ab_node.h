@@ -4,6 +4,8 @@
 #include <vector>
 #include <string>
 
+#include "limits.h"
+
 class ABNode
 {
 private:
@@ -32,8 +34,14 @@ public:
   bool
   is_max_node();
 
-  int
-  eval();
+  void
+  is_max_node(bool val);
+
+  void
+  make_max_min(bool max=true);
+
+  int 
+  eval(int alpha=INT_MIN, int beta=INT_MAX);
 };
 
 #endif
