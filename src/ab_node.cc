@@ -37,3 +37,13 @@ ABNode::add_child(ABNode &n)
   m_children.push_back(n);
 }
 
+int
+ABNode::eval()
+{
+  // if it's terminal just return its value!
+  if (m_terminal) {
+    return m_terminal_value;
+  }
+
+
+}

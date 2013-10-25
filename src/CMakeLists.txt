@@ -15,6 +15,6 @@ link_directories(${ab_pruning_BINARY_DIR})
 
 add_executable(main main.cc)
 
-# target_link_libraries(main Game ${Boost_LIBRARIES})
+target_link_libraries(main ABNode ${Boost_LIBRARIES})
 
 add_subdirectory(test)

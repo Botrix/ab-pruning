@@ -13,7 +13,7 @@ private:
   std::vector<ABNode> m_children;
 public:
   ABNode();
-  
+
   ABNode(std::string name, bool terminal=false, int terminal_value=0);
 
   std::string
