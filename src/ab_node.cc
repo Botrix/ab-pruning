@@ -69,7 +69,7 @@ ABNode::eval(int alpha, int beta)
   eval_res_t out;
 
   if (m_is_terminal) {
-    std::cout << "Expanding terminal node " << m_name << ": " << m_terminal_value << std::endl;
+    std::cout << "Expanding Terminal Node " << m_name << ": " << m_terminal_value << std::endl;
     out.val = m_terminal_value;
     out.node = this;
     return out;
