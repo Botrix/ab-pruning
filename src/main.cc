@@ -106,8 +106,11 @@ main(int argc, char** argv)
   // it should trace all the steps correctly, so now just
   // let it go!
   a0.make_max_min();
-  int aval = a0.eval();
+  eval_res_t ares = a0.eval();
 
-  std::cout << "Expansions completed" << std::endl;
-  std::cout << "Value of Max Node A = " << aval << std::endl;
+  std::cout << "Expansions completed" << std::endl << std::endl;
+  std::cout << "Value of Max Node A = " << ares.val << std::endl << std::endl;
+  std::cout << "Move that Max Node A would take is = " << ares.node->name() << std::endl;
+
+  return 0;
 }

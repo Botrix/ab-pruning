@@ -63,20 +63,27 @@ ABNode::make_max_min(bool max)
   }
 }
 
-int
+eval_res_t
 ABNode::eval(int alpha, int beta)
 {
+  eval_res_t out;
+
   if (m_is_terminal) {
     std::cout << "Expanding terminal node " << m_name << ": " << m_terminal_value << std::endl;
-    return m_terminal_value;
+    out.val = m_terminal_value;
+    out.node = this;
+    return out;
   }
 
   if (m_is_max_node) {
+    out.val = alpha;
     std::cout << "Expanding Max Node " << m_name << ": alpha=" << alpha << " beta=" << beta << std::endl;
     for (int i = 0; i < m_children.size(); i++) {
-      int val = m_children[i].eval(alpha, beta);
-      if (val > alpha) {
-        alpha = val;
+      eval_res_t val = m_children[i].eval(alpha, beta);
+      if (val.val > alpha) {
+        alpha = val.val;
+        out.val = val.val;
+        out.node = &m_children[i];
       }
       if (beta <= alpha) {
         for (int j = i + 1; j < m_children.size(); j++) {
@@ -85,13 +92,16 @@ ABNode::eval(int alpha, int beta)
         break;
       }
     }
-    return alpha;
+    return out;
   } else {
+    out.val = beta;
     std::cout << "Expanding Min Node " << m_name << ": alpha=" << alpha << " beta=" << beta << std::endl;
     for (int i = 0; i < m_children.size(); i++) {
-      int val = m_children[i].eval(alpha, beta);
-      if (val < beta) {
-        beta = val;
+      eval_res_t val = m_children[i].eval(alpha, beta);
+      if (val.val < beta) {
+        beta = val.val;
+        out.val = val.val;
+        out.node = &m_children[i];
       }
       if (beta <= alpha) {
         for (int j = i + 1; j < m_children.size(); j++) {
@@ -100,6 +110,6 @@ ABNode::eval(int alpha, int beta)
         break;
       }
     }
-    return beta;
+    return out;
   }
 }

@@ -17,4 +17,4 @@ add_executable(main main.cc)
 
 target_link_libraries(main ABNode ${Boost_LIBRARIES})
 
-add_subdirectory(test)
+#add_subdirectory(test)

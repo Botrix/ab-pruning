@@ -6,6 +6,13 @@
 
 #include "limits.h"
 
+class ABNode;
+
+typedef struct {
+  int val;
+  ABNode *node;
+} eval_res_t;
+
 class ABNode
 {
 private:
@@ -40,7 +47,7 @@ public:
   void
   make_max_min(bool max=true);
 
-  int 
+  eval_res_t
   eval(int alpha=INT_MIN, int beta=INT_MAX);
 };
 
